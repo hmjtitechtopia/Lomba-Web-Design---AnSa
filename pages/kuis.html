@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Kebudayaan Klungkung — Pusaka Bhumi Semarapura</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #12100e;
+      color: #e7e5e4;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #fef3c7 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-box-shadow {
+      box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.2);
+    }
+  </style>
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="bg-[#12100e] text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-200 overflow-x-hidden min-h-screen flex flex-col justify-between">
+
+  <header class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-center">
+    <nav class="w-full max-w-7xl px-6 py-4 rounded-full flex items-center justify-between backdrop-blur-md bg-[#12100e]/70 border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] transition-all duration-300">
+      <a href="index.html" class="text-xl md:text-2xl font-serif font-bold text-amber-100 tracking-wide hover:text-amber-300 transition">
+        Pusaka Semarapura
+      </a>
+
+      <ul class="hidden md:flex items-center space-x-6 lg:space-x-8 text-stone-200 font-medium text-sm lg:text-base">
+        <li><a href="index.html" class="hover:text-amber-400 transition">Beranda</a></li>
+        <li><a href="index.html#sejarah" class="hover:text-amber-400 transition">Sejarah</a></li>
+        <li class="relative group">
+          <button class="flex items-center space-x-1 hover:text-amber-400 font-medium transition focus:outline-none">
+            <span>Jelajah</span>
+            <svg class="w-4 h-4 fill-current transform group-hover:rotate-180 transition-transform duration-200" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-48 rounded-2xl backdrop-blur-xl bg-[#1c1917]/95 border border-amber-500/20 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 overflow-hidden z-50">
+            <a href="kebudayaan.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kebudayaan</a>
+            <a href="kuliner.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="hover:text-amber-400 transition">Scan</a></li>
+        <li><a href="#Kuis" class="text-amber-400 font-semibold transition">Kuis</a></li>
+        <li><a href="profile.html" class="hover:text-amber-400 transition">Profile</a></li>
+      </ul>
+
+      <button id="menu-btn" class="md:hidden text-amber-200 focus:outline-none p-1" aria-label="Buka Menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mt-3 hidden absolute top-20 left-4 right-4 rounded-3xl backdrop-blur-2xl bg-[#1c1917]/98 border border-amber-500/30 p-6 text-stone-200 md:hidden shadow-2xl transition-all z-50">
+      <ul class="flex flex-col space-y-4 font-medium">
+        <li><a href="index.html" class="block hover:text-amber-400">Beranda</a></li>
+        <li><a href="index.html#sejarah" class="block hover:text-amber-400">Sejarah</a></li>
+        <li>
+          <span class="block text-amber-500/80 text-xs font-bold uppercase tracking-wider mb-1">Jelajah</span>
+          <div class="pl-4 space-y-2 border-l-2 border-amber-500/20">
+            <a href="kebudayaan.html" class="block hover:text-amber-400 text-sm">Kebudayaan</a>
+            <a href="kuliner.html" class="block hover:text-amber-400 text-sm">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="block hover:text-amber-400">Scan</a></li>
+        <li><a href="#Kuis" class="block text-amber-300 font-semibold">Kuis</a></li>
+        <li><a href="profile.html" class="block hover:text-amber-400">Profile</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="pt-32 md:pt-40 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto w-full flex-grow">
+
+    <div class="text-center max-w-3xl mx-auto mb-10 space-y-4">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-stone-900/60 backdrop-blur-md border border-amber-500/30 text-xs md:text-sm font-semibold tracking-widest uppercase text-amber-300">
+        Uji Pengetahuan Budaya
+      </span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-extrabold tracking-tight text-amber-50">
+        Kuis Pusaka Semarapura
+      </h1>
+      <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+        Uji seberapa mendalam pemahaman Anda mengenai warisan seni lukis, tradisi, dan pusaka luhur Klungkung.
+      </p>
+    </div>
+
+    <div id="quiz-start-screen" class="rounded-3xl bg-[#1c1917]/90 border border-amber-500/30 p-6 sm:p-10 shadow-2xl text-center space-y-6">
+      <div class="w-20 h-20 mx-auto rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-2xl font-serif font-bold text-amber-100 mb-2">Siap Memulai Kuis?</h2>
+        <p class="text-stone-300 text-sm sm:text-base font-light max-w-lg mx-auto">
+          Kuis ini terdiri dari 7 soal pilihan ganda yang dirancang berdasarkan kebudayaan dan sejarah Klungkung Semarapura.
+        </p>
+      </div>
+      <button id="start-btn" class="inline-flex items-center space-x-2 px-8 py-4 rounded-full bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold text-base transition-all duration-300 shadow-lg shadow-amber-600/30">
+        <span>Mulai Kuis Sekarang</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="quiz-container" class="hidden space-y-6">
+      
+      <div class="flex items-center justify-between text-xs sm:text-sm text-stone-400 font-semibold px-2">
+        <span id="question-tracker">Pertanyaan 1 dari 7</span>
+        <span id="score-tracker" class="text-amber-400">Skor: 0</span>
+      </div>
+
+      <div class="w-full bg-stone-900 h-2 rounded-full overflow-hidden border border-amber-500/20">
+        <div id="progress-bar" class="bg-gradient-to-r from-amber-600 to-amber-400 h-full w-0 transition-all duration-300"></div>
+      </div>
+
+      <div class="rounded-3xl bg-[#1c1917]/90 border border-amber-500/30 p-6 sm:p-8 shadow-2xl space-y-6">
+        <div>
+          <span id="question-category" class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-amber-400 bg-amber-500/10 mb-3">
+            Kategori
+          </span>
+          <h2 id="question-text" class="text-xl sm:text-2xl font-serif font-bold text-amber-100 leading-snug">
+            Teks Pertanyaan...
+          </h2>
+        </div>
+
+        <div id="options-container" class="grid grid-cols-1 gap-3.5">
+        </div>
+
+        <div id="explanation-box" class="hidden p-4 rounded-2xl bg-amber-950/40 border border-amber-500/30 text-stone-200 text-sm space-y-1">
+          <div id="explanation-status" class="font-bold flex items-center space-x-2"></div>
+          <p id="explanation-text" class="text-stone-300 font-light leading-relaxed"></p>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button id="next-btn" class="hidden inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold text-sm transition-all duration-300">
+            <span>Pertanyaan Berikutnya</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-screen" class="hidden rounded-3xl bg-[#1c1917]/90 border border-amber-500/30 p-6 sm:p-10 shadow-2xl text-center space-y-6">
+      <div class="inline-block p-4 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 mb-2">
+        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+        </svg>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Hasil Akhir Kuis</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-amber-100 mt-1">Nilai & Predikat Anda</h2>
+      </div>
+
+      <div class="py-6 px-4 rounded-2xl bg-amber-950/30 border border-amber-500/20 max-w-sm mx-auto space-y-2">
+        <div id="final-score" class="text-5xl font-extrabold gold-gradient-text">0</div>
+        <div id="badge-title" class="text-lg font-serif font-bold text-amber-300">Predikat</div>
+        <p id="badge-desc" class="text-xs text-stone-400 font-light px-4">Deskripsi singkat penilaian sesuai skor.</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <button id="restart-btn" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-full bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold text-sm transition-all duration-300">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          <span>Ulangi Kuis</span>
+        </button>
+        <a href="kebudayaan.html" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-3.5 rounded-full bg-stone-800 hover:bg-stone-700 border border-amber-500/30 text-amber-200 font-bold text-sm transition-all duration-300">
+          <span>Pelajari Kembali Kebudayaan</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-amber-500/20 bg-[#0d0c0b] py-8 text-center text-xs text-stone-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p class="font-serif text-amber-200/80 text-sm">Pusaka Bhumi Semarapura</p>
+      <p>© Warisan Seni & Kebudayaan Klungkung. Seluruh Hak Cipta Dilindungi.</p>
+    </div>
+  </footer>
+
+  <script src="../js/kuis.js"></script>
+</body>
+</html>

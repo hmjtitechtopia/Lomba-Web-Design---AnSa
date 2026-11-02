@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusaka Bhumi Semarapura — Jejak Sejarah Klungkung Bali</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #12100e;
+      color: #e7e5e4;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="bg-[#12100e] text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-200">
+
+  <header class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-center">
+
+    <nav class="w-full max-w-7xl px-6 py-4 rounded-full flex items-center justify-between backdrop-blur-md bg-[#12100e]/70 border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] transition-all duration-300">
+
+      <a href="index.html" class="text-xl md:text-2xl font-serif font-bold text-amber-100 tracking-wide hover:text-amber-300 transition">
+        Pusaka Semarapura
+      </a>
+
+      <ul class="hidden md:flex items-center space-x-6 lg:space-x-8 text-stone-200 font-medium text-sm lg:text-base">
+        <li>
+          <a id="nav-beranda" href="#beranda" class="text-amber-400 font-semibold hover:text-amber-300 transition">Beranda</a>
+        </li>
+        <li>
+          <a id="nav-sejarah" href="#sejarah" class="text-stone-200 hover:text-amber-400 transition">Sejarah</a>
+        </li>
+
+        <li class="relative group">
+          <button class="flex items-center space-x-1 hover:text-amber-400 transition focus:outline-none">
+            <span>Jelajah</span>
+            <svg class="w-4 h-4 fill-current transform group-hover:rotate-180 transition-transform duration-200" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </button>
+
+          <div class="absolute left-0 mt-2 w-48 rounded-2xl backdrop-blur-xl bg-[#1c1917]/95 border border-amber-500/20 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 overflow-hidden z-50">
+            <a href="kebudayaan.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kebudayaan</a>
+            <a href="kuliner.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kuliner</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="scan.html" class="hover:text-amber-400 transition">Scan</a>
+        </li>
+        <li>
+          <a href="kuis.html" class="hover:text-amber-400 transition">Kuis</a>
+        </li>
+        <li>
+          <a href="profile.html" class="hover:text-amber-400 transition">Profile</a>
+        </li>
+      </ul>
+
+      <button id="menu-btn" class="md:hidden text-amber-200 focus:outline-none p-1" aria-label="Buka Menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mt-3 hidden absolute top-20 left-4 right-4 rounded-3xl backdrop-blur-2xl bg-[#1c1917]/95 border border-amber-500/30 p-6 text-stone-200 md:hidden shadow-2xl transition-all z-50">
+      <ul class="flex flex-col space-y-4 font-medium">
+        <li><a id="mobile-nav-beranda" href="#beranda" class="block text-amber-300 font-semibold">Beranda</a></li>
+        <li><a id="mobile-nav-sejarah" href="#sejarah" class="block text-stone-200 hover:text-amber-400">Sejarah</a></li>
+        <li>
+          <span class="block text-amber-500/80 text-xs font-bold uppercase tracking-wider mb-1">Jelajah</span>
+          <div class="pl-4 space-y-2 border-l-2 border-amber-500/20">
+            <a href="kebudayaan.html" class="block hover:text-amber-400 text-sm">Kebudayaan</a>
+            <a href="kuliner.html" class="block hover:text-amber-400 text-sm">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="block hover:text-amber-400">Scan</a></li>
+        <li><a href="kuis.html" class="block hover:text-amber-400">Kuis</a></li>
+        <li><a href="profile.html" class="block hover:text-amber-400">Profile</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div id="beranda" class="relative w-full h-screen overflow-hidden flex items-end justify-start font-sans">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      class="absolute top-0 left-0 w-full h-full object-cover -z-10"
+    >
+      <source src="../assets/vidieos/BackgroundUtama.mp4" type="video/mp4" />
+      Browser Anda tidak mendukung video HTML5.
+    </video>
+
+    <div class="absolute inset-0 bg-gradient-to-t from-[#12100e] via-black/50 to-black/30 -z-10"></div>
+
+    <div class="w-full max-w-7xl mx-auto px-6 md:px-12 pb-16 md:pb-24 z-10 text-stone-100">
+      <div class="max-w-3xl space-y-4 md:space-y-6">
+
+        <div class="inline-block px-4 py-1.5 rounded-full bg-stone-900/60 backdrop-blur-md border border-amber-500/30 text-xs md:text-sm font-semibold tracking-widest uppercase text-amber-300">
+          Pusaka Bhumi Semarapura
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-extrabold tracking-tight leading-[1.1] text-amber-50">
+          Warisan Leluhur,<br />
+          <span class="text-amber-200/90 font-serif italic">Identitas Masa Kini.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
+          Menelusuri jejak kejayaan, seni, dan nilai-nilai luhur Kerajaan Klungkung yang terus hidup dan menginspirasi generasi hari ini hingga esok.
+        </p>
+
+        <div class="pt-2">
+          <a href="#sejarah" class="inline-block px-7 py-3.5 rounded-full bg-amber-600/30 backdrop-blur-md border border-amber-500/50 text-amber-100 font-medium text-sm md:text-base hover:bg-amber-600/50 hover:border-amber-400 hover:scale-105 transition-all duration-300">
+            Mulai Jelajahi
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <section id="sejarah" class="relative bg-[#12100e] pt-24 md:pt-36 pb-24 px-4 sm:px-6 md:px-12 overflow-hidden">
+
+    <div class="max-w-4xl mx-auto text-center relative z-10 mb-6">
+      <span class="block text-xs md:text-sm uppercase tracking-[0.3em] text-amber-400 font-semibold mb-3">
+        Semarapura · Bali
+      </span>
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-amber-100 mb-4 tracking-tight">
+        Jejak Sejarah Klungkung
+      </h2>
+      <p class="text-stone-400 text-sm md:text-base max-w-xl mx-auto font-light leading-relaxed mb-6">
+        Dari kejayaan Gelgel hingga Puputan 1908, empat babak yang membentuk Kota Semarapura.
+      </p>
+
+      <span class="inline-block text-[10px] md:text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold">
+        Gulir Untuk Menelusuri
+      </span>
+    </div>
+
+    <div class="hidden md:block relative w-full max-w-5xl mx-auto">
+
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <svg class="w-full h-full" viewBox="0 0 1000 2150" fill="none" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gold-line-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0" />
+              <stop offset="4%" stop-color="#f59e0b" stop-opacity="1" />
+              <stop offset="30%" stop-color="#d97706" />
+              <stop offset="70%" stop-color="#f59e0b" />
+              <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+
+            <filter id="gold-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#f59e0b" flood-opacity="0.6"/>
+            </filter>
+          </defs>
+
+          <circle cx="500" cy="10" r="5" fill="#f59e0b" stroke="#78350f" stroke-width="2" />
+          <circle cx="500" cy="10" r="1.5" fill="#fef3c7" />
+
+          <path
+            d="M 500 10 L 500 120 C 500 260, 180 250, 180 385 C 180 620, 820 610, 820 850 C 820 1080, 180 1080, 180 1315 C 180 1540, 820 1540, 820 1765 L 820 1900 C 820 2050, 500 2020, 500 2110"
+            stroke="#f59e0b"
+            stroke-width="8"
+            stroke-opacity="0.2"
+            stroke-linecap="round"
+            fill="none"
+          />
+
+          <path
+            d="M 500 10 L 500 120 C 500 260, 180 250, 180 385 C 180 620, 820 610, 820 850 C 820 1080, 180 1080, 180 1315 C 180 1540, 820 1540, 820 1765 L 820 1900 C 820 2050, 500 2020, 500 2110"
+            stroke="url(#gold-line-grad)"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            fill="none"
+            filter="url(#gold-glow)"
+          />
+
+          <circle cx="180" cy="385" r="14" fill="#181512" stroke="#f59e0b" stroke-width="3" />
+          <circle cx="180" cy="385" r="5" fill="#fde68a" />
+
+          <circle cx="820" cy="850" r="14" fill="#181512" stroke="#f59e0b" stroke-width="3" />
+          <circle cx="820" cy="850" r="5" fill="#fde68a" />
+
+          <circle cx="180" cy="1315" r="14" fill="#181512" stroke="#f59e0b" stroke-width="3" />
+          <circle cx="180" cy="1315" r="5" fill="#fde68a" />
+
+          <circle cx="820" cy="1765" r="14" fill="#181512" stroke="#f59e0b" stroke-width="3" />
+          <circle cx="820" cy="1765" r="5" fill="#fde68a" />
+
+          <circle cx="500" cy="2110" r="10" fill="#f59e0b" stroke="#78350f" stroke-width="3" />
+        </svg>
+      </div>
+
+      <div class="relative z-10 h-[450px] flex items-center justify-between gap-8 pt-20">
+        <div class="w-[18%]"></div>
+
+        <div class="w-[42%] max-w-sm">
+          <div class="kartu-sejarah group cursor-pointer rounded-2xl p-3 bg-[#1e1914] border border-[#78350f]/40 shadow-[0_12px_36px_rgba(0,0,0,0.6)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-amber-400 hover:shadow-[0_18px_45px_rgba(245,158,11,0.22)]" data-sejarah="gelgel" role="button" tabindex="0" aria-label="Buka detail Kejayaan Gelgel">
+            <div class="aspect-[16/10] w-full rounded-xl flex items-center justify-center overflow-hidden">
+              <img src="../assets/foto/kejayaangelgel-16.webp" alt="Kejayaan Gel-gel abad ke-16" class="w-full h-full object-cover rounded-lg">
+            </div>
+          </div>
+        </div>
+
+        <div class="w-[40%] space-y-2 text-left">
+          <span class="text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
+            Abad Ke-16
+          </span>
+          <h3 class="text-3xl font-serif font-bold text-amber-100">
+            Kejayaan Gelgel
+          </h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed">
+            Di bawah Dalem Waturenggong, Kerajaan Gelgel mencapai puncak kejayaannya sebagai pusat kekuasaan dan kebudayaan Bali. Tradisi lukisan wayang Kamasan berkembang di sekitar istana pada masa ini.
+          </p>
+        </div>
+      </div>
+
+      <div class="relative z-10 h-[480px] flex items-center justify-between gap-8">
+        <div class="w-[40%] space-y-2 text-left">
+          <span class="text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
+            1686
+          </span>
+          <h3 class="text-3xl font-serif font-bold text-amber-100">
+            Berdirinya Kerajaan Klungkung
+          </h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed">
+            Dewa Agung Jambe memindahkan pusat pemerintahan dari Gelgel ke Semarapura. Dari sinilah para Dewa Agung memerintah dan dihormati sebagai raja yang dituakan di antara raja-raja Bali.
+          </p>
+        </div>
+
+        <div class="w-[42%] max-w-sm">
+          <div class="kartu-sejarah group cursor-pointer rounded-2xl p-3 bg-[#1e1512] border border-[#852a1a]/40 shadow-[0_12px_36px_rgba(0,0,0,0.6)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-amber-400 hover:shadow-[0_18px_45px_rgba(245,158,11,0.22)]" data-sejarah="klungkung" role="button" tabindex="0" aria-label="Buka detail Berdirinya Kerajaan Klungkung">
+            <div class="aspect-[16/10] w-full rounded-xl flex items-center justify-center overflow-hidden">
+              <img class="w-full h-full object-cover rounded-lg" src="../assets/foto/Berdirinya Kerajaan Klungkung.webp" alt="Berdirinya Kerajaan Klungkung">
+            </div>
+          </div>
+        </div>
+
+        <div class="w-[18%]"></div>
+      </div>
+
+      <div class="relative z-10 h-[450px] flex items-center justify-between gap-8">
+        <div class="w-[18%]"></div>
+
+        <div class="w-[42%] max-w-sm">
+          <div class="kartu-sejarah group cursor-pointer rounded-2xl p-3 bg-[#1f1516] border border-[#831843]/40 shadow-[0_12px_36px_rgba(0,0,0,0.6)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-amber-400 hover:shadow-[0_18px_45px_rgba(245,158,11,0.22)]" data-sejarah="puputan" role="button" tabindex="0" aria-label="Buka detail Puputan Klungkung">
+            <div class="aspect-[16/10] w-full rounded-xl flex items-center justify-center overflow-hidden">
+              <img src="../assets/foto/Puputan.webp" alt="Puputan Klungkung" class="w-full h-full object-cover rounded-lg">
+            </div>
+          </div>
+        </div>
+
+        <div class="w-[40%] space-y-2 text-left">
+          <span class="text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
+            28 April 1908
+          </span>
+          <h3 class="text-3xl font-serif font-bold text-amber-100">
+            Puputan Klungkung
+          </h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed">
+            Menghadapi pasukan Belanda, Dewa Agung Jambe II bersama keluarga dan pengikutnya memilih berperang hingga titik darah penghabisan. Peristiwa ini mengakhiri masa Kerajaan Klungkung.
+          </p>
+        </div>
+      </div>
+
+      <div class="relative z-10 h-[450px] flex items-center justify-between gap-8">
+        <div class="w-[40%] space-y-2 text-left">
+          <span class="text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">
+            Masa Kini
+          </span>
+          <h3 class="text-3xl font-serif font-bold text-amber-100">
+            Semarapura Hari Ini
+          </h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed">
+            Semarapura kini menjadi ibu kota Kabupaten Klungkung, Kertha Gosa dan Museum Semarajaya menjaga ingatan sejarah serta seni lukis Kamasan agar tetap hidup.
+          </p>
+        </div>
+
+        <div class="w-[42%] max-w-sm">
+          <div class="kartu-sejarah group cursor-pointer rounded-2xl p-3 bg-[#131c19] border border-[#14532d]/40 shadow-[0_12px_36px_rgba(0,0,0,0.6)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:border-amber-400 hover:shadow-[0_18px_45px_rgba(245,158,11,0.22)]" data-sejarah="semarapura" role="button" tabindex="0" aria-label="Buka detail Semarapura Hari Ini">
+            <div class="aspect-[16/10] w-full rounded-xl flex items-center justify-center overflow-hidden">
+              <img class="w-full h-full object-cover rounded-lg" src="../assets/foto/semarapura hari ini.webp" alt="Semarapura Hari ini">
+            </div>
+          </div>
+        </div>
+
+        <div class="w-[18%]"></div>
+      </div>
+
+      <div class="h-32"></div>
+    </div>
+
+    <div class="block md:hidden relative max-w-md mx-auto pt-10 pb-8">
+
+      <div class="absolute left-6 -translate-x-1/2 top-4 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-[#181512] shadow-[0_0_8px_rgba(245,158,11,0.8)] z-10"></div>
+      <div class="absolute left-6 top-5 bottom-12 w-[3.5px] bg-gradient-to-b from-amber-400/20 via-amber-500 to-amber-600 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)]"></div>
+
+      <div class="relative pl-14 pb-14">
+        <div class="absolute left-6 -translate-x-1/2 top-1 w-6 h-6 rounded-full bg-[#181512] border-2 border-amber-400 flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.6)]">
+          <div class="w-2 h-2 rounded-full bg-amber-300"></div>
+        </div>
+        <div>
+          <span class="text-[11px] uppercase tracking-widest text-amber-400 font-semibold block mb-1">Abad Ke-16</span>
+          <h3 class="text-2xl font-serif font-bold text-amber-100 mb-2">Kejayaan Gelgel</h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed mb-4">
+            Di bawah Dalem Waturenggong, Kerajaan Gelgel mencapai puncak kejayaannya sebagai pusat kekuasaan dan kebudayaan Bali.
+          </p>
+          <div class="kartu-sejarah group cursor-pointer rounded-xl p-2 bg-[#1e1914] border border-[#78350f]/40 shadow-lg" data-sejarah="gelgel" role="button" tabindex="0">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden">
+              <img src="../assets/foto/kejayaangelgel-16.webp" alt="Kejayaan Gel-gel" class="w-full h-full object-cover rounded-lg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative pl-14 pb-14">
+        <div class="absolute left-6 -translate-x-1/2 top-1 w-6 h-6 rounded-full bg-[#181512] border-2 border-amber-400 flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.6)]">
+          <div class="w-2 h-2 rounded-full bg-amber-300"></div>
+        </div>
+        <div>
+          <span class="text-[11px] uppercase tracking-widest text-amber-400 font-semibold block mb-1">1686</span>
+          <h3 class="text-2xl font-serif font-bold text-amber-100 mb-2">Berdirinya Kerajaan Klungkung</h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed mb-4">
+            Dewa Agung Jambe memindahkan pusat pemerintahan dari Gelgel ke Semarapura.
+          </p>
+          <div class="kartu-sejarah group cursor-pointer rounded-xl p-2 bg-[#1e1512] border border-[#852a1a]/40 shadow-lg" data-sejarah="klungkung" role="button" tabindex="0">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden">
+              <img src="../assets/foto/Berdirinya Kerajaan Klungkung.webp" alt="Kerajaan Klungkung" class="w-full h-full object-cover rounded-lg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative pl-14 pb-14">
+        <div class="absolute left-6 -translate-x-1/2 top-1 w-6 h-6 rounded-full bg-[#181512] border-2 border-amber-400 flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.6)]">
+          <div class="w-2 h-2 rounded-full bg-amber-300"></div>
+        </div>
+        <div>
+          <span class="text-[11px] uppercase tracking-widest text-amber-400 font-semibold block mb-1">28 April 1908</span>
+          <h3 class="text-2xl font-serif font-bold text-amber-100 mb-2">Puputan Klungkung</h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed mb-4">
+            Menghadapi pasukan Belanda, Dewa Agung Jambe II bersama keluarga memilih berperang hingga titik darah penghabisan.
+          </p>
+          <div class="kartu-sejarah group cursor-pointer rounded-xl p-2 bg-[#1f1516] border border-[#831843]/40 shadow-lg" data-sejarah="puputan" role="button" tabindex="0">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden">
+              <img src="../assets/foto/Puputan.webp" alt="Puputan" class="w-full h-full object-cover rounded-lg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative pl-14 pb-8">
+        <div class="absolute left-6 -translate-x-1/2 top-1 w-6 h-6 rounded-full bg-[#181512] border-2 border-amber-400 flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.6)]">
+          <div class="w-2 h-2 rounded-full bg-amber-300"></div>
+        </div>
+        <div>
+          <span class="text-[11px] uppercase tracking-widest text-amber-400 font-semibold block mb-1">Masa Kini</span>
+          <h3 class="text-2xl font-serif font-bold text-amber-100 mb-2">Semarapura Hari Ini</h3>
+          <p class="text-stone-300 text-sm font-light leading-relaxed mb-4">
+            Semarapura kini menjadi ibu kota Kabupaten Klungkung, Kertha Gosa dan Museum Semarajaya menjaga ingatan sejarah.
+          </p>
+          <div class="kartu-sejarah group cursor-pointer rounded-xl p-2 bg-[#131c19] border border-[#14532d]/40 shadow-lg" data-sejarah="semarapura" role="button" tabindex="0">
+            <div class="aspect-[16/10] w-full rounded-lg overflow-hidden">
+              <img src="../assets/foto/semarapura hari ini.webp" alt="Semarapura Hari Ini" class="w-full h-full object-cover rounded-lg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative pl-14 pt-4 flex items-center">
+        <div class="absolute left-6 -translate-x-1/2 w-4 h-4 rounded-full bg-amber-400 border-2 border-[#181512] shadow-[0_0_8px_rgba(245,158,11,0.8)]"></div>
+      </div>
+
+    </div>
+
+    <div class="max-w-xl mx-auto text-center pt-12 md:pt-8 space-y-5 relative z-10">
+
+      <p class="text-xs md:text-sm uppercase tracking-[0.25em] text-amber-400 font-semibold">
+        ayo jelajahi tentang klungkung lagi !
+      </p>
+
+      <h3 class="text-3xl md:text-4xl font-serif font-bold text-amber-100 tracking-tight">
+        Pusaka Bhumi Semarapura
+      </h3>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="kuliner.html" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-amber-600/30 backdrop-blur-md border border-amber-500/50 text-amber-100 font-medium text-sm md:text-base hover:bg-amber-600/50 hover:border-amber-400 hover:scale-105 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+          Jelajahi Kuliner
+        </a>
+        <a href="kebudayaan.html" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-transparent border border-amber-500/50 text-amber-200 font-medium text-sm md:text-base hover:bg-amber-500/10 hover:border-amber-400 hover:scale-105 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+          Jelajahi Budaya
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div id="footer-container"></div>
+
+  <div id="modal-sejarah" class="hidden fixed inset-0 z-[100] items-center justify-center p-4 bg-black/75 backdrop-blur-sm" aria-hidden="true">
+    <div class="relative w-full max-w-6xl rounded-3xl border border-amber-500/40 bg-[#1c1713] p-5 pt-16 shadow-[0_20px_80px_rgba(0,0,0,0.7)] md:p-10" role="dialog" aria-modal="true" aria-labelledby="modal-judul">
+
+      <button id="tutup-modal" type="button" class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/40 p-0 text-amber-200 transition hover:bg-amber-500/20 hover:text-white" aria-label="Tutup detail sejarah">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"></path>
+        </svg>
+      </button>
+
+      <div class="grid gap-8 md:grid-cols-[0.8fr_1.15fr_1.05fr] md:items-center">
+        <div class="space-y-3 md:border-r md:border-amber-500/20 md:pr-8">
+          <span id="modal-periode" class="block text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold"></span>
+          <h2 id="modal-judul" class="font-serif text-3xl leading-tight text-amber-100 md:text-5xl"></h2>
+          <div class="h-px w-16 bg-amber-500"></div>
+          <p id="modal-label" class="text-xs uppercase tracking-[0.2em] text-amber-200/60">
+            Jejak Sejarah Klungkung
+          </p>
+        </div>
+
+        <div id="modal-gambar" class="flex min-h-56 items-center justify-center rounded-2xl border border-amber-500/20 bg-[#14110f] p-3 md:min-h-[340px]"></div>
+
+        <div class="md:border-l md:border-amber-500/20 md:pl-8">
+          <p id="modal-isi" class="text-sm leading-8 text-stone-300 md:text-base"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    const dataSejarah = {
+      gelgel: {
+        periode: 'Abad Ke-16',
+        judul: 'Kejayaan Gelgel',
+        isi: 'Di bawah Dalem Waturenggong, Kerajaan Gelgel mencapai puncak kejayaannya sebagai pusat kekuasaan dan kebudayaan Bali. Tradisi lukisan wayang Kamasan berkembang di sekitar istana pada masa ini.'
+      },
+      klungkung: {
+        periode: '1686',
+        judul: 'Berdirinya Kerajaan Klungkung',
+        isi: 'Dewa Agung Jambe memindahkan pusat pemerintahan dari Gelgel ke Semarapura. Dari sinilah para Dewa Agung memerintah dan dihormati sebagai raja yang dituakan di antara raja-raja Bali.'
+      },
+      puputan: {
+        periode: '28 April 1908',
+        judul: 'Puputan Klungkung',
+        isi: 'Menghadapi pasukan Belanda, Dewa Agung Jambe II bersama keluarga dan pengikutnya memilih berperang hingga titik darah penghabisan. Peristiwa ini mengakhiri masa Kerajaan Klungkung.'
+      },
+      semarapura: {
+        periode: 'Masa Kini',
+        judul: 'Semarapura Hari Ini',
+        isi: 'Semarapura kini menjadi ibu kota Kabupaten Klungkung. Kertha Gosa dan Museum Semarajaya menjaga ingatan sejarah serta seni lukis Kamasan agar tetap hidup.'
+      }
+    };
+
+    const kartuSejarah = document.querySelectorAll('.kartu-sejarah');
+    const modalSejarah = document.getElementById('modal-sejarah');
+    const tutupModal = document.getElementById('tutup-modal');
+    const modalPeriode = document.getElementById('modal-periode');
+    const modalJudul = document.getElementById('modal-judul');
+    const modalIsi = document.getElementById('modal-isi');
+    const modalGambar = document.getElementById('modal-gambar');
+
+    const navBeranda = document.getElementById('nav-beranda');
+    const navSejarah = document.getElementById('nav-sejarah');
+    const mobileNavBeranda = document.getElementById('mobile-nav-beranda');
+    const mobileNavSejarah = document.getElementById('mobile-nav-sejarah');
+    const bagianSejarah = document.getElementById('sejarah');
+    const bagianBeranda = document.getElementById('beranda');
+
+    function ubahMenuAktif(menuAktif, menuTidakAktif) {
+      [menuAktif, menuTidakAktif].forEach((menu) => {
+        menu.classList.remove('text-amber-400', 'text-amber-300', 'text-stone-200', 'font-semibold');
+      });
+
+      menuAktif.classList.add('text-amber-400', 'font-semibold');
+      menuTidakAktif.classList.add('text-stone-200');
+    }
+
+    function cekMenuAktif() {
+      const posisiSejarah = bagianSejarah.getBoundingClientRect().top;
+
+      if (posisiSejarah <= 120) {
+        ubahMenuAktif(navSejarah, navBeranda);
+        ubahMenuAktif(mobileNavSejarah, mobileNavBeranda);
+      } else {
+        ubahMenuAktif(navBeranda, navSejarah);
+        ubahMenuAktif(mobileNavBeranda, mobileNavSejarah);
+      }
+    }
+
+    window.addEventListener('scroll', cekMenuAktif);
+    cekMenuAktif();
+
+    function bukaModal(kunciSejarah, kartu) {
+      const sejarah = dataSejarah[kunciSejarah];
+      const gambarKartu = kartu.querySelector('img');
+
+      if (!sejarah || !gambarKartu) return;
+
+      modalPeriode.textContent = sejarah.periode;
+      modalJudul.textContent = sejarah.judul;
+      modalIsi.textContent = sejarah.isi;
+
+      modalGambar.innerHTML = `<img src="${gambarKartu.src}" alt="${gambarKartu.alt}" class="w-full h-full object-cover rounded-xl">`;
+
+      modalSejarah.classList.remove('hidden');
+      modalSejarah.classList.add('flex');
+      modalSejarah.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('overflow-hidden');
+      tutupModal.focus();
+    }
+
+    function tutupDetail() {
+      modalSejarah.classList.add('hidden');
+      modalSejarah.classList.remove('flex');
+      modalSejarah.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    kartuSejarah.forEach((kartu) => {
+      kartu.addEventListener('click', () => {
+        bukaModal(kartu.dataset.sejarah, kartu);
+      });
+
+      kartu.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          bukaModal(kartu.dataset.sejarah, kartu);
+        }
+      });
+    });
+
+    tutupModal.addEventListener('click', tutupDetail);
+
+    modalSejarah.addEventListener('click', (event) => {
+      if (event.target === modalSejarah) {
+        tutupDetail();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modalSejarah.classList.contains('hidden')) {
+        tutupDetail();
+      }
+    });
+  </script>
+
+  <script>
+    fetch('../components/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+        const container = document.getElementById('footer-container');
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(oldScript => {
+          const newScript = document.createElement('script');
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
+          document.body.appendChild(newScript);
+          oldScript.remove();
+        });
+      })
+      .catch(err => console.error('Gagal memuat footer:', err));
+  </script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusaka Bhumi Semarapura — Profil Penjelajah</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #12100e;
+      color: #e7e5e4;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="bg-[#12100e] text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-200 overflow-x-hidden">
+
+
+  <header class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-center">
+    <nav class="w-full max-w-7xl px-6 py-4 rounded-full flex items-center justify-between backdrop-blur-md bg-[#12100e]/70 border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] transition-all duration-300">
+      <a href="index.html" class="text-xl md:text-2xl font-serif font-bold text-amber-100 tracking-wide hover:text-amber-300 transition">
+        Pusaka Semarapura
+      </a>
+
+      <ul class="hidden md:flex items-center space-x-6 lg:space-x-8 text-stone-200 font-medium text-sm lg:text-base">
+        <li><a href="index.html" class="hover:text-amber-400 transition">Beranda</a></li>
+        <li><a href="index.html#sejarah" class="hover:text-amber-400 transition">Sejarah</a></li>
+        <li class="relative group">
+          <button class="flex items-center space-x-1 hover:text-amber-400 transition focus:outline-none" type="button">
+            <span>Jelajah</span>
+            <svg class="w-4 h-4 fill-current transform group-hover:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-48 rounded-2xl backdrop-blur-xl bg-[#1c1917]/95 border border-amber-500/20 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 overflow-hidden z-50">
+            <a href="kebudayaan.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kebudayaan</a>
+            <a href="kuliner.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="hover:text-amber-400 transition">Scan</a></li>
+        <li><a href="kuis.html" class="hover:text-amber-400 transition">Kuis</a></li>
+        <li><a href="profile.html" class="text-amber-400 font-semibold transition" aria-current="page">Profile</a></li>
+      </ul>
+
+      <button id="menu-btn" class="md:hidden text-amber-200 focus:outline-none p-1" type="button" aria-label="Buka Menu" aria-expanded="false">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mt-3 hidden absolute top-20 left-4 right-4 rounded-3xl backdrop-blur-2xl bg-[#1c1917]/98 border border-amber-500/30 p-6 text-stone-200 md:hidden shadow-2xl transition-all z-50">
+      <ul class="flex flex-col space-y-4 font-medium">
+        <li><a href="index.html" class="block hover:text-amber-400">Beranda</a></li>
+        <li><a href="index.html#sejarah" class="block hover:text-amber-400">Sejarah</a></li>
+        <li>
+          <span class="block text-amber-500/80 text-xs font-bold uppercase tracking-wider mb-1">Jelajah</span>
+          <div class="pl-4 space-y-2 border-l-2 border-amber-500/20">
+            <a href="kebudayaan.html" class="block hover:text-amber-400 text-sm">Kebudayaan</a>
+            <a href="kuliner.html" class="block hover:text-amber-400 text-sm">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="block hover:text-amber-400">Scan</a></li>
+        <li><a href="kuis.html" class="block hover:text-amber-400">Kuis</a></li>
+        <li><a href="profile.html" class="block text-amber-300 font-semibold">Profile</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="pt-32 md:pt-40 pb-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
+    <section class="max-w-5xl mx-auto">
+      <div class="rounded-3xl bg-gradient-to-br from-[#2b1e14] via-[#1c1917] to-[#171311] border border-amber-500/30 p-5 sm:p-8 md:p-10 shadow-2xl">
+        <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-8">
+          <div class="relative mx-auto md:mx-0 shrink-0">
+            <div class="h-28 w-28 sm:h-36 sm:w-36 rounded-full border-4 border-amber-400/70 bg-amber-500/15 p-1 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+              <div class="flex h-full w-full items-center justify-center rounded-full bg-[#3a2617] text-amber-200">
+                <svg class="h-16 w-16 sm:h-20 sm:w-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-label="Foto profil sementara">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" d="M15.75 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0"></path>
+                </svg>
+              </div>
+            </div>
+            <span class="absolute -right-1 bottom-2 flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#1c1917] bg-amber-500 text-stone-950" title="Foto profil terkunci">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 10V8a4 4 0 00-8 0v2m-1 0h10v9H7v-9z"></path>
+              </svg>
+            </span>
+          </div>
+
+          <div class="text-center md:text-left min-w-0">
+            <p class="text-xs uppercase tracking-[0.25em] text-amber-400 font-semibold">Profil Penjelajah</p>
+            <h1 id="profile-name" class="mt-2 text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-amber-50">Penjelajah Pusaka</h1>
+            <p id="profile-rank" class="mt-2 text-amber-200/80">Penjelajah Pemula · Tingkat 1</p>
+            <p class="mt-4 inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-2 text-xs text-amber-100/80">
+              <svg class="h-4 w-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11a3 3 0 100-6 3 3 0 000 6zm-6 8a6 6 0 0112 0"></path>
+              </svg>
+              Foto profil terkunci sementara
+            </p>
+          </div>
+
+          <div class="md:ml-auto rounded-2xl border border-amber-400/30 bg-amber-500/10 px-6 py-5 text-center min-w-[180px]">
+            <p class="text-xs uppercase tracking-widest text-amber-300">Total Jejak</p>
+            <p id="total-points" class="mt-1 text-4xl font-serif font-bold text-amber-100">0</p>
+            <p class="text-xs text-amber-200/70">Poin</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917]/80 p-5">
+          <p class="text-xs uppercase tracking-widest text-stone-400">Artefak Terpindai</p>
+          <p id="scanned-items" class="mt-2 text-3xl font-serif font-bold text-amber-100">0</p>
+        </div>
+        <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917]/80 p-5">
+          <p class="text-xs uppercase tracking-widest text-stone-400">Misi Selesai</p>
+          <p class="mt-2 text-3xl font-serif font-bold text-amber-100">0</p>
+        </div>
+        <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917]/80 p-5">
+          <p class="text-xs uppercase tracking-widest text-stone-400">Peringkat</p>
+          <p class="mt-2 text-3xl font-serif font-bold text-amber-100">—</p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <section class="rounded-2xl border border-amber-500/20 bg-[#1c1917]/80 p-5 sm:p-6">
+          <h2 class="text-2xl font-serif font-bold text-amber-100">Informasi Akun</h2>
+          <div class="mt-5 divide-y divide-amber-500/10">
+            <div class="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <span class="text-sm text-stone-400">Nama</span>
+              <span id="account-name" class="text-sm text-stone-200 sm:text-right">Penjelajah Pusaka</span>
+            </div>
+            <div class="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <span class="text-sm text-stone-400">Email</span>
+              <span id="account-email" class="text-sm text-stone-200 sm:text-right">Belum terhubung</span>
+            </div>
+            <div class="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <span class="text-sm text-stone-400">Status Akun</span>
+              <span class="text-sm text-amber-200 sm:text-right">Mode Demo</span>
+            </div>
+            <div class="flex flex-col gap-1 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <span class="text-sm text-stone-400">Tanggal Bergabung</span>
+              <span class="text-sm text-stone-200 sm:text-right">Menunggu login</span>
+            </div>
+          </div>
+          <p class="mt-4 rounded-xl border border-stone-700/60 bg-stone-900/40 p-3 text-xs leading-relaxed text-stone-400">
+            Data akun akan dihubungkan dengan halaman login setelah sistem akun selesai dibuat.
+          </p>
+          <button id="profile-logout-btn" type="button" class="mt-5 w-full rounded-xl border border-red-500/40 bg-red-500/10 py-3 text-sm font-semibold text-red-200 hover:bg-red-500/20 hover:border-red-400 transition">
+            Keluar Akun
+          </button>
+        </section>
+
+        <section class="rounded-2xl border border-amber-500/20 bg-[#1c1917]/80 p-5 sm:p-6">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-serif font-bold text-amber-100">Riwayat Perolehan Poin</h2>
+            <a href="scan.html" class="shrink-0 text-xs font-semibold text-amber-300 hover:text-amber-100 transition">Scan QR</a>
+          </div>
+          <div id="activity-list" class="mt-5 space-y-3">
+            <p id="empty-activity" class="rounded-xl border border-dashed border-stone-700 p-5 text-center text-sm text-stone-400">
+              Belum ada QR Code yang dipindai.
+            </p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <section class="rounded-2xl border border-amber-500/20 bg-[#1c1917]/80 p-5 sm:p-6">
+          <div class="flex items-center justify-between gap-4">
+            <h2 class="text-2xl font-serif font-bold text-amber-100">Riwayat Perolehan Poin</h2>
+            <a href="scan.html" class="shrink-0 text-xs font-semibold text-amber-300 hover:text-amber-100 transition">Scan QR</a>
+          </div>
+          <div id="activity-list" class="mt-5 space-y-3">
+            <p id="empty-activity" class="rounded-xl border border-dashed border-stone-700 p-5 text-center text-sm text-stone-400">
+              Belum ada QR Code yang dipindai.
+            </p>
+          </div>
+        </section>
+   </div>
+
+      <section class="mt-8 rounded-3xl border border-amber-500/30 bg-gradient-to-br from-[#1c1917] via-[#171311] to-[#12100e] p-6 sm:p-8 shadow-2xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <div>
+            <span class="text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">Penukaran Hadiah</span>
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-amber-100 mt-1">Reward Kuliner Klungkung</h2>
+          </div>
+          <p class="text-xs text-stone-400 max-w-md">Tukarkan jejak poin penjelajahan Anda dengan berbagai kuliner khas Semarapura Klungkung.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917] p-5 flex flex-col justify-between hover:border-amber-400/50 transition">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-bold border border-amber-500/20">80 Poin</span>
+                <span class="text-xs text-stone-400">Kue Tradisional</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-amber-100">Klepon</h3>
+              <p class="mt-2 text-xs text-stone-300 leading-relaxed">Kue beras ketan kenyal berisi gula merah cair yang meletup di mulut dan ditaburi kelapa parut gurih.</p>
+            </div>
+            <button onclick="tukarkanReward('Klepon', 80)" class="mt-5 w-full py-2.5 rounded-xl bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-200 hover:text-stone-950 font-bold text-xs transition-all duration-300">
+              Tukarkan
+            </button>
+          </div>
+
+          <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917] p-5 flex flex-col justify-between hover:border-amber-400/50 transition">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-bold border border-amber-500/20">140 Poin</span>
+                <span class="text-xs text-stone-400">Minuman Segar</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-amber-100">Es Cendol</h3>
+              <p class="mt-2 text-xs text-stone-300 leading-relaxed">Minuman es tradisional kenyal dengan santan gurih dan sirup gula aren asli khas Bali.</p>
+            </div>
+            <button onclick="tukarkanReward('Es Cendol', 140)" class="mt-5 w-full py-2.5 rounded-xl bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-200 hover:text-stone-950 font-bold text-xs transition-all duration-300">
+              Tukarkan
+            </button>
+          </div>
+
+          <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917] p-5 flex flex-col justify-between hover:border-amber-400/50 transition">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-bold border border-amber-500/20">150 Poin</span>
+                <span class="text-xs text-stone-400">Minuman Herbal</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-amber-100">Es Daluman</h3>
+              <p class="mt-2 text-xs text-stone-300 leading-relaxed">Minuman serbet cincau hijau alami khas Bali disajikan dengan kuah santan dan sirup gula merah halus.</p>
+            </div>
+            <button onclick="tukarkanReward('Es Daluman', 150)" class="mt-5 w-full py-2.5 rounded-xl bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-200 hover:text-stone-950 font-bold text-xs transition-all duration-300">
+              Tukarkan
+            </button>
+          </div>
+
+          <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917] p-5 flex flex-col justify-between hover:border-amber-400/50 transition">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-bold border border-amber-500/20">230 Poin</span>
+                <span class="text-xs text-stone-400">Makanan Pedas</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-amber-100">Mie Koples</h3>
+              <p class="mt-2 text-xs text-stone-300 leading-relaxed">Olahan mie khas Klungkung bermumbu kacang gurih pedas disiram minyak kaldu yang nikmat.</p>
+            </div>
+            <button onclick="tukarkanReward('Mie Koples', 230)" class="mt-5 w-full py-2.5 rounded-xl bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-200 hover:text-stone-950 font-bold text-xs transition-all duration-300">
+              Tukarkan
+            </button>
+          </div>
+
+          <div class="rounded-2xl border border-amber-500/20 bg-[#1c1917] p-5 flex flex-col justify-between hover:border-amber-400/50 transition sm:col-span-2 lg:col-span-1">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-bold border border-amber-500/20">350 Poin</span>
+                <span class="text-xs text-stone-400">Kuliner Khas</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-amber-100">Serombotan</h3>
+              <p class="mt-2 text-xs text-stone-300 leading-relaxed">Makanan khas Klungkung berupa urap sayur-sayuran segar lengkap dengan bumbu kencur dan bumbu kacang pedas khas Klungkung.</p>
+            </div>
+            <button onclick="tukarkanReward('Serombotan', 350)" class="mt-5 w-full py-2.5 rounded-xl bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-200 hover:text-stone-950 font-bold text-xs transition-all duration-300">
+              Tukarkan
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div id="reward-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="w-full max-w-sm rounded-3xl bg-[#1c1917] border border-amber-500/30 p-6 text-center space-y-4 shadow-2xl">
+          <div id="modal-icon" class="w-12 h-12 mx-auto rounded-full flex items-center justify-center"></div>
+          <h3 id="modal-title" class="text-xl font-serif font-bold text-amber-100"></h3>
+          <p id="modal-message" class="text-xs text-stone-300 leading-relaxed"></p>
+          <button onclick="closeRewardModal()" class="w-full py-2.5 rounded-full bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold text-xs transition">
+            Tutup
+          </button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    const menuButton = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', () => {
+        const menuSedangTersembunyi = mobileMenu.classList.toggle('hidden');
+        menuButton.setAttribute('aria-expanded', String(!menuSedangTersembunyi));
+      });
+    }
+
+    const defaultProfile = {
+      name: 'Penjelajah Pusaka',
+      email: 'Belum terhubung',
+      totalPoints: 0,
+      scannedItems: 0,
+      activities: []
+    };
+
+    function getProfileData() {
+      try {
+        const savedProfile = JSON.parse(localStorage.getItem('pusakaProfile'));
+        if (!savedProfile) return { ...defaultProfile };
+
+        return {
+          ...defaultProfile,
+          ...savedProfile,
+          activities: Array.isArray(savedProfile.activities) ? savedProfile.activities : []
+        };
+      } catch (error) {
+        return { ...defaultProfile };
+      }
+    }
+
+    function saveProfileData(data) {
+      localStorage.setItem('pusakaProfile', JSON.stringify(data));
+    }
+
+    function getRank(totalPoints) {
+      if (totalPoints >= 300) return 'Penjelajah Mahir · Tingkat 3';
+      if (totalPoints >= 100) return 'Penjelajah Madya · Tingkat 2';
+      return 'Penjelajah Pemula · Tingkat 1';
+    }
+
+    function tampilkanProfil() {
+      const profileData = getProfileData();
+      const totalPoints = Number(profileData.totalPoints) || 0;
+      const scannedItems = Number(profileData.scannedItems) || 0;
+
+      const profileName = document.getElementById('profile-name');
+      const profileRank = document.getElementById('profile-rank');
+      const totalPointsElem = document.getElementById('total-points');
+      const scannedItemsElem = document.getElementById('scanned-items');
+      const accountName = document.getElementById('account-name');
+      const accountEmail = document.getElementById('account-email');
+
+      if (profileName) profileName.textContent = profileData.name;
+      if (profileRank) profileRank.textContent = getRank(totalPoints);
+      if (totalPointsElem) totalPointsElem.textContent = totalPoints;
+      if (scannedItemsElem) scannedItemsElem.textContent = scannedItems;
+      if (accountName) accountName.textContent = profileData.name;
+      if (accountEmail) accountEmail.textContent = profileData.email;
+
+      const activityList = document.getElementById('activity-list');
+      if (!activityList) return;
+
+      const emptyActivity = document.getElementById('empty-activity');
+      const activities = Array.isArray(profileData.activities) ? profileData.activities : [];
+
+      if (activities.length === 0) {
+        if (!emptyActivity) {
+          activityList.innerHTML = `<p id="empty-activity" class="rounded-xl border border-dashed border-stone-700 p-5 text-center text-sm text-stone-400">Belum ada QR Code yang dipindai.</p>`;
+        }
+        return;
+      }
+
+      if (emptyActivity) emptyActivity.remove();
+      activityList.innerHTML = activities.map(activity => `
+        <div class="flex items-center justify-between gap-4 rounded-xl border border-amber-500/10 bg-[#12100e]/60 p-4">
+          <div class="min-w-0">
+            <p class="truncate text-sm font-semibold text-stone-200">${activity.title}</p>
+            <p class="mt-1 text-xs text-stone-500">${activity.date}</p>
+          </div>
+          <span class="shrink-0 text-sm font-bold ${activity.points < 0 ? 'text-rose-400' : 'text-emerald-300'}">
+            ${activity.points < 0 ? activity.points : '+' + activity.points} Poin
+          </span>
+        </div>
+      `).join('');
+    }
+
+    function tukarkanReward(namaReward, poinDibutuhkan) {
+      const profileData = getProfileData();
+      let totalPoints = Number(profileData.totalPoints) || 0;
+
+      if (totalPoints < poinDibutuhkan) {
+        showRewardModal(
+          false,
+          'Poin Tidak Cukup',
+          `Anda membutuhkan ${poinDibutuhkan} poin untuk menukarkan ${namaReward}. Kumpulkan lebih banyak poin dengan menjelajahi pusaka.`
+        );
+        return;
+      }
+
+      totalPoints -= poinDibutuhkan;
+      profileData.totalPoints = totalPoints;
+
+      const tgl = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+      profileData.activities.unshift({
+        title: `Penukaran Voucher: ${namaReward}`,
+        date: tgl,
+        points: -poinDibutuhkan
+      });
+
+      saveProfileData(profileData);
+      tampilkanProfil();
+
+      showRewardModal(
+        true,
+        'Penukaran Berhasil!',
+        `Selamat! Voucher ${namaReward} berhasil ditukarkan. Tunjukkan bukti riwayat di profil ini ke merchant kuliner Klungkung.`
+      );
+    }
+
+    function showRewardModal(isSuccess, title, message) {
+      const modal = document.getElementById('reward-modal');
+      const modalIcon = document.getElementById('modal-icon');
+      const modalTitle = document.getElementById('modal-title');
+      const modalMessage = document.getElementById('modal-message');
+
+      modalTitle.textContent = title;
+      modalMessage.textContent = message;
+
+      if (isSuccess) {
+        modalIcon.className = 'w-12 h-12 mx-auto rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center';
+        modalIcon.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>`;
+      } else {
+        modalIcon.className = 'w-12 h-12 mx-auto rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center';
+        modalIcon.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>`;
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeRewardModal() {
+      const modal = document.getElementById('reward-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    tampilkanProfil();
+
+    const profileLogoutBtn = document.getElementById('profile-logout-btn');
+
+    if (profileLogoutBtn) {
+      profileLogoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = '../index.html';
+      });
+    }
+  </script>
+</body>
+</html>

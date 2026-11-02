@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusaka Bhumi Semarapura — Scan QR Code</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #12100e;
+      color: #e7e5e4;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    .upload-drag-active {
+      border-color: #fbbf24;
+      background-color: rgba(245, 158, 11, 0.12);
+    }
+  </style>
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="bg-[#12100e] text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-200 overflow-x-hidden">
+
+  <header class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-center">
+    <nav class="w-full max-w-7xl px-6 py-4 rounded-full flex items-center justify-between backdrop-blur-md bg-[#12100e]/70 border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] transition-all duration-300">
+      <a href="index.html" class="text-xl md:text-2xl font-serif font-bold text-amber-100 tracking-wide hover:text-amber-300 transition">
+        Pusaka Semarapura
+      </a>
+
+      <ul class="hidden md:flex items-center space-x-6 lg:space-x-8 text-stone-200 font-medium text-sm lg:text-base">
+        <li><a href="index.html" class="hover:text-amber-400 transition">Beranda</a></li>
+        <li><a href="index.html#sejarah" class="hover:text-amber-400 transition">Sejarah</a></li>
+        <li class="relative group">
+          <button class="flex items-center space-x-1 hover:text-amber-400 transition focus:outline-none" type="button">
+            <span>Jelajah</span>
+            <svg class="w-4 h-4 fill-current transform group-hover:rotate-180 transition-transform duration-200" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-48 rounded-2xl backdrop-blur-xl bg-[#1c1917]/95 border border-amber-500/20 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 overflow-hidden z-50">
+            <a href="kebudayaan.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kebudayaan</a>
+            <a href="kuliner.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="text-amber-400 font-semibold transition" aria-current="page">Scan</a></li>
+        <li><a href="kuis.html" class="hover:text-amber-400 transition">Kuis</a></li>
+        <li><a href="profile.html" class="hover:text-amber-400 transition">Profile</a></li>
+      </ul>
+
+      <button id="menu-btn" class="md:hidden text-amber-200 focus:outline-none p-1" type="button" aria-label="Buka Menu" aria-expanded="false">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mt-3 hidden absolute top-20 left-4 right-4 rounded-3xl backdrop-blur-2xl bg-[#1c1917]/98 border border-amber-500/30 p-6 text-stone-200 md:hidden shadow-2xl transition-all z-50">
+      <ul class="flex flex-col space-y-4 font-medium">
+        <li><a href="index.html" class="block hover:text-amber-400">Beranda</a></li>
+        <li><a href="index.html#sejarah" class="block hover:text-amber-400">Sejarah</a></li>
+        <li>
+          <span class="block text-amber-500/80 text-xs font-bold uppercase tracking-wider mb-1">Jelajah</span>
+          <div class="pl-4 space-y-2 border-l-2 border-amber-500/20">
+            <a href="kebudayaan.html" class="block hover:text-amber-400 text-sm">Kebudayaan</a>
+            <a href="kuliner.html" class="block hover:text-amber-400 text-sm">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="block text-amber-300 font-semibold">Scan</a></li>
+        <li><a href="kuis.html" class="block hover:text-amber-400">Kuis</a></li>
+        <li><a href="profile.html" class="block hover:text-amber-400">Profile</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="pt-32 md:pt-40 pb-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
+    <section class="max-w-3xl mx-auto text-center mb-10">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-stone-900/60 border border-amber-500/30 text-xs md:text-sm font-semibold tracking-widest uppercase text-amber-300">
+        Fitur Scan Pusaka
+      </span>
+      <h1 class="mt-5 text-4xl sm:text-5xl md:text-6xl font-serif font-extrabold tracking-tight text-amber-50">
+        Temukan Jejak Baru
+      </h1>
+      <p class="mt-5 text-stone-300 text-base sm:text-lg font-light leading-relaxed">
+        Unggah foto QR Code dari koleksi atau lokasi budaya untuk mencoba alur penambahan poin Jejak.
+      </p>
+    </section>
+
+    <section class="max-w-2xl mx-auto rounded-3xl bg-[#1c1917]/90 border border-amber-500/30 p-5 sm:p-8 shadow-2xl">
+      <div class="flex gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4 text-left mb-6">
+        <svg class="w-5 h-5 shrink-0 text-amber-300 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+        </svg>
+        <p class="text-sm leading-relaxed text-amber-100/80">
+          Ini adalah rancangan awal. Untuk sementara, foto yang dipilih akan diproses sebagai QR Code demo dan memberikan <strong class="text-amber-200">+50 Poin Jejak</strong> satu kali.
+        </p>
+      </div>
+
+      <label id="upload-zone" for="qr-file" class="block cursor-pointer rounded-2xl border-2 border-dashed border-amber-500/40 bg-[#12100e]/60 p-8 sm:p-12 text-center transition hover:border-amber-400 hover:bg-amber-500/5">
+        <input id="qr-file" type="file" accept="image/*" class="sr-only">
+        <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-500/15 text-amber-300">
+          <svg class="h-9 w-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 16.5V19a2 2 0 002 2h14a2 2 0 002-2v-2.5M7 10l5-5m0 0l5 5m-5-5v12"></path>
+          </svg>
+        </span>
+        <span class="mt-5 block text-lg font-semibold text-amber-100">Pilih foto QR Code</span>
+        <span class="mt-2 block text-sm text-stone-400">Klik area ini atau tarik foto ke sini</span>
+        <span class="mt-3 block text-xs text-stone-500">Format gambar: JPG, PNG, WEBP</span>
+      </label>
+
+      <p id="upload-error" class="hidden mt-3 text-center text-sm text-red-300" role="alert"></p>
+
+      <div id="preview-area" class="hidden mt-6 rounded-2xl border border-amber-500/20 bg-[#12100e]/70 p-4">
+        <div class="flex items-center justify-between gap-4 mb-4">
+          <div class="min-w-0 text-left">
+            <p class="text-xs uppercase tracking-widest text-amber-400">Foto terpilih</p>
+            <p id="selected-file-name" class="truncate text-sm text-stone-200 mt-1"></p>
+          </div>
+          <button id="remove-image" type="button" class="shrink-0 rounded-full border border-stone-600 px-3 py-1.5 text-xs text-stone-300 hover:border-amber-400 hover:text-amber-200 transition">
+            Ganti Foto
+          </button>
+        </div>
+        <img id="preview-image" src="" alt="Pratinjau foto QR Code" class="max-h-72 w-full rounded-xl object-contain bg-stone-950/70">
+      </div>
+
+      <button id="add-points-btn" type="button" disabled class="mt-6 w-full rounded-full bg-amber-600/30 border border-amber-500/40 px-6 py-3.5 text-sm font-semibold text-amber-100 transition hover:bg-amber-500/50 disabled:cursor-not-allowed disabled:opacity-40">
+        Tambahkan ke Jejak
+      </button>
+
+      <div id="success-panel" class="hidden mt-6 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-5 text-center" role="status" aria-live="polite">
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <h2 class="mt-3 text-xl font-serif font-bold text-emerald-200">Poin Jejak berhasil ditambahkan!</h2>
+        <p class="mt-1 text-sm text-emerald-100/80"><span id="points-added">+50</span> poin sudah disimpan untuk profil ini.</p>
+        <div class="mt-5 flex flex-col sm:flex-row justify-center gap-3">
+          <a href="profile.html" class="rounded-full bg-emerald-500/20 border border-emerald-400/40 px-5 py-2.5 text-sm font-semibold text-emerald-100 hover:bg-emerald-500/30 transition">Lihat Profil</a>
+          <button id="scan-again" type="button" class="rounded-full border border-stone-600 px-5 py-2.5 text-sm font-semibold text-stone-200 hover:border-amber-400 hover:text-amber-200 transition">Scan Lagi</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    const menuButton = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', () => {
+        const menuSedangTersembunyi = mobileMenu.classList.toggle('hidden');
+        menuButton.setAttribute('aria-expanded', String(!menuSedangTersembunyi));
+      });
+    }
+
+    const qrFileInput = document.getElementById('qr-file');
+    const uploadZone = document.getElementById('upload-zone');
+    const previewArea = document.getElementById('preview-area');
+    const previewImage = document.getElementById('preview-image');
+    const selectedFileName = document.getElementById('selected-file-name');
+    const addPointsButton = document.getElementById('add-points-btn');
+    const successPanel = document.getElementById('success-panel');
+    const uploadError = document.getElementById('upload-error');
+    const removeImageButton = document.getElementById('remove-image');
+    const scanAgainButton = document.getElementById('scan-again');
+
+    let selectedFile = null;
+    let imagePreviewUrl = '';
+    let pointsAlreadyAdded = false;
+
+    const defaultProfile = {
+      name: 'Penjelajah Pusaka',
+      email: 'Belum terhubung',
+      totalPoints: 0,
+      scannedItems: 0,
+      activities: []
+    };
+
+    function getProfileData() {
+      try {
+        const savedProfile = JSON.parse(localStorage.getItem('pusakaProfile'));
+        if (!savedProfile) return { ...defaultProfile };
+
+        return {
+          ...defaultProfile,
+          ...savedProfile,
+          activities: Array.isArray(savedProfile.activities) ? savedProfile.activities : []
+        };
+      } catch (error) {
+        return { ...defaultProfile };
+      }
+    }
+
+    function saveProfileData(profileData) {
+      try {
+        localStorage.setItem('pusakaProfile', JSON.stringify(profileData));
+      } catch (error) {
+        console.warn('Data profil tidak dapat disimpan di browser.');
+      }
+    }
+
+    function tampilkanPratinjau(file) {
+      uploadError.classList.add('hidden');
+      uploadError.textContent = '';
+
+      if (!file || !file.type.startsWith('image/')) {
+        uploadError.textContent = 'Silakan pilih file gambar untuk QR Code.';
+        uploadError.classList.remove('hidden');
+        return;
+      }
+
+      selectedFile = file;
+      pointsAlreadyAdded = false;
+      imagePreviewUrl = URL.createObjectURL(file);
+      previewImage.src = imagePreviewUrl;
+      selectedFileName.textContent = file.name;
+      previewArea.classList.remove('hidden');
+      addPointsButton.disabled = false;
+      addPointsButton.textContent = 'Tambahkan ke Jejak';
+      successPanel.classList.add('hidden');
+    }
+
+    function resetUpload() {
+      selectedFile = null;
+      pointsAlreadyAdded = false;
+      qrFileInput.value = '';
+      previewArea.classList.add('hidden');
+      previewImage.src = '';
+      addPointsButton.disabled = true;
+      addPointsButton.textContent = 'Tambahkan ke Jejak';
+      successPanel.classList.add('hidden');
+
+      if (imagePreviewUrl) {
+        URL.revokeObjectURL(imagePreviewUrl);
+        imagePreviewUrl = '';
+      }
+    }
+
+    qrFileInput.addEventListener('change', (event) => {
+      tampilkanPratinjau(event.target.files[0]);
+    });
+
+    uploadZone.addEventListener('dragover', (event) => {
+      event.preventDefault();
+      uploadZone.classList.add('upload-drag-active');
+    });
+
+    uploadZone.addEventListener('dragleave', () => {
+      uploadZone.classList.remove('upload-drag-active');
+    });
+
+    uploadZone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      uploadZone.classList.remove('upload-drag-active');
+      tampilkanPratinjau(event.dataTransfer.files[0]);
+    });
+
+    removeImageButton.addEventListener('click', resetUpload);
+    scanAgainButton.addEventListener('click', resetUpload);
+
+    addPointsButton.addEventListener('click', () => {
+      if (!selectedFile || pointsAlreadyAdded) return;
+
+      const profileData = getProfileData();
+      const points = 50;
+      const today = new Intl.DateTimeFormat('id-ID', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      }).format(new Date());
+
+      profileData.totalPoints = Number(profileData.totalPoints) + points;
+      profileData.scannedItems = Number(profileData.scannedItems) + 1;
+      profileData.activities.unshift({
+        title: 'QR Code Pusaka Klungkung',
+        points: points,
+        date: today
+      });
+
+      saveProfileData(profileData);
+      pointsAlreadyAdded = true;
+      addPointsButton.disabled = true;
+      addPointsButton.textContent = 'Poin Sudah Ditambahkan';
+      document.getElementById('points-added').textContent = `+${points}`;
+      successPanel.classList.remove('hidden');
+    });
+  </script>
+
+  <script>
+    fetch('../components/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+        const footerContainer = document.getElementById('footer-container');
+        const footerScripts = footerContainer.querySelectorAll('script');
+
+        footerScripts.forEach(oldScript => {
+          const newScript = document.createElement('script');
+          newScript.textContent = oldScript.textContent;
+          document.body.appendChild(newScript);
+          oldScript.remove();
+        });
+      })
+      .catch(error => console.error('Gagal memuat footer:', error));
+  </script>
+</body>
+</html>

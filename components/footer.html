@@ -1,0 +1,83 @@
+<footer id="footer-full" class="relative mt-16 border-t border-amber-100/70 bg-gradient-to-br from-[#f8dc91] via-[#efb64d] to-[#d9852d] text-[#2c1a0b]" aria-label="Footer lengkap" style="display:none;">
+  <div class="relative mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-16">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+      <section class="lg:col-span-2 max-w-xl">
+        <p class="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-[#6b3510]">Pusaka Bhumi Semarapura</p>
+        <p class="text-sm leading-7 text-[#553116] md:text-base mb-6">
+          Ruang digital untuk mengenal jejak sejarah, kebudayaan, dan cita rasa khas Klungkung.
+          Kami menghadirkan narasi visual, informasi bersumber, dan pengalaman interaktif agar warisan leluhur
+          lebih dekat dengan generasi masa kini.
+        </p>
+
+        <div class="border-t border-[#6b3510]/20 pt-6 space-y-3">
+          <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-[#6b3510]">Keterangan Foto & Izin</h3>
+          <ul class="space-y-1.5 text-sm text-[#553116]">
+            <li>• Foto koleksi: dokumentasi tim saat kunjungan ke Museum Semarajaya. Konfirmasi izin penggunaan sedang diproses. Penggunaan untuk keperluan edukasi non-komersial.</li>
+            <li>• Semua aset visual dilindungi hak cipta; penggunaan non-komersial hanya untuk keperluan edukasi.</li>
+          </ul>
+        </div>
+      </section>
+
+      <nav aria-label="Tentang">
+        <h3 class="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#6b3510]">Tentang</h3>
+        <ul class="space-y-3 text-sm font-medium md:text-base">
+          <li><a href="#" class="text-[#553116] transition hover:text-amber-50">Tentang & Bantuan</a></li>
+          <li><a href="#" class="text-[#553116] transition hover:text-amber-50">Kebijakan Privasi</a></li>
+          <li><a href="#" class="text-[#553116] transition hover:text-amber-50">Syarat Penggunaan</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Bantuan">
+        <h3 class="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-[#6b3510]">Bantuan</h3>
+        <ul class="space-y-3 text-sm font-medium md:text-base">
+          <li><a href="#" class="text-[#553116] transition hover:text-amber-50">Panduan Penggunaan</a></li>
+          <li><a href="#" class="text-[#553116] transition hover:text-amber-50">FAQ</a></li>
+          <li><a href="#" class="text-[#553116] transition hover:text-amber-50">Hubungi Kami</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="mt-12 flex flex-col gap-2 border-t border-[#6b3510]/25 pt-6 text-xs font-medium text-[#553116] sm:flex-row sm:items-center sm:justify-between">
+      <p>© 2026 Pusaka Bhumi Semarapura</p>
+      <p>Jejak · Budaya · Kuliner</p>
+      <p><a href="#" class="hover:text-amber-50 underline-offset-1 hover:underline">Lapor Kesalahan Data</a></p>
+    </div>
+  </div>
+</footer>
+
+<footer id="footer-compact" class="relative mt-16 overflow-hidden border-t border-amber-100/70 bg-gradient-to-br from-[#f8dc91] via-[#efb64d] to-[#d9852d] text-[#2c1a0b] py-6" aria-label="Footer ringkas" style="display:none;">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="flex flex-col gap-3 text-center md:flex-row md:items-center md:justify-between text-xs font-medium text-[#553116]">
+      <p class="font-semibold text-[#3f230e]">Pusaka Bhumi Semarapura</p>
+      <nav class="flex flex-wrap items-center justify-center gap-4" aria-label="Menu ringkas">
+        <a href="#" class="hover:text-amber-50 transition">Privasi</a>
+        <a href="#" class="hover:text-amber-50 transition">Tentang & Bantuan</a>
+        <a href="#" class="hover:text-amber-50 transition underline-offset-1 hover:underline">Lapor Kesalahan</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const path = window.location.pathname;
+  const isIndex = path.endsWith('index.html') || path === '/' || path.endsWith('/ansa-tectopia/') || path.endsWith('/ansa-tectopia/index.html');
+  const isKuisOrGame = path.includes('kuis') || path.includes('game') || path.includes('voucher') || path.includes('jejak-saya');
+
+  const footerFull = document.getElementById('footer-full');
+  const footerCompact = document.getElementById('footer-compact');
+
+  if (isIndex) {
+    if (footerFull) footerFull.style.display = 'block';
+  } else if (isKuisOrGame) {
+    if (footerCompact) footerCompact.style.display = 'block';
+  } else {
+    if (footerCompact) footerCompact.style.display = 'block';
+  }
+
+  window.sembunyikanFooterSaatGameplay = function(sembunyikan) {
+    const footer = document.getElementById('footer-compact') || document.getElementById('footer-full');
+    if (footer) footer.style.display = sembunyikan ? 'none' : 'block';
+  };
+</script>

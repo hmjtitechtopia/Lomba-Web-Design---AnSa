@@ -1,0 +1,64 @@
+<header class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-center">
+    <nav class="w-full max-w-7xl px-6 py-4 rounded-full flex items-center justify-between backdrop-blur-md bg-white/20 border border-white/30 shadow-[inset_2px_2px_4px_rgba(255,255,255,0.4),_0_8px_32px_0_rgba(0,0,0,0.2)] transition-all duration-300">
+
+      <a href="#" class="text-xl md:text-2xl font-bold text-white tracking-wide drop-shadow-md hover:opacity-90 transition">
+        Klungkung
+      </a>
+
+      <ul class="hidden md:flex items-center space-x-6 lg:space-x-8 text-white font-medium text-sm lg:text-base">
+        <li>
+          <a href="#" class="hover:text-gray-950 transition-colors duration-200 drop-shadow">Beranda</a>
+        </li>
+        <li>
+          <a href="#" class="hover:text-gray-950 transition-colors duration-200 drop-shadow">Sejarah</a>
+        </li>
+        
+        <li class="relative group">
+          <button class="flex items-center space-x-1 hover:text-gray-950 transition-colors duration-200 drop-shadow focus:outline-none">
+            <span>Jelajah</span>
+            <svg class="w-4 h-4 fill-current transform group-hover:rotate-180 transition-transform duration-200" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </button>
+          
+          <div class="mt-6 absolute left-0 mt-2 w-48 rounded-2xl backdrop-blur-lg bg-white/30 border border-white/30 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 overflow-hidden">
+            <a href="#" class="block px-4 py-3 text-sm text-white hover:bg-white/20 transition-colors">Kebudayaan</a>
+            <a href="#" class="block px-4 py-3 text-sm text-white hover:bg-white/20 transition-colors">Kuliner</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="#" class="hover:text-gray-950 transition-colors duration-200 drop-shadow">Scan</a>
+        </li>
+        <li>
+          <a href="#" class="hover:text-gray-950 transition-colors duration-200 drop-shadow">Quiz</a>
+        </li>
+        <li>
+          <a href="#" class="hover:text-gray-950 transition-colors duration-200 drop-shadow">Profile</a>
+        </li>
+      </ul>
+
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none p-1">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mt-3 hidden absolute top-20 left-4 right-4 rounded-3xl backdrop-blur-xl bg-white/5 border border-white/20 p-6 text-white md:hidden shadow-2xl transition-all">
+      <ul class="flex flex-col space-y-4 font-medium">
+        <li><a href="#" class="block hover:text-amber-300">Beranda</a></li>
+        <li><a href="#" class="block hover:text-amber-300">Sejarah</a></li>
+        <li>
+          <span class="block text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Jelajah</span>
+          <div class="pl-4 space-y-2 border-l-2 border-white/20">
+            <a href="#" class="block hover:text-amber-300">Kebudayaan</a>
+            <a href="#" class="block hover:text-amber-300">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="#" class="block hover:text-amber-300">Scan</a></li>
+        <li><a href="#" class="block hover:text-amber-300">Quiz</a></li>
+        <li><a href="#" class="block hover:text-amber-300">Profile</a></li>
+      </ul>
+    </div>
+  </header>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusaka Bhumi Semarapura — Warisan Seni & Kebudayaan Klungkung</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #12100e;
+      color: #e7e5e4;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+</head>
+<body class="bg-[#12100e] text-stone-200 antialiased selection:bg-amber-500/30 selection:text-amber-200 overflow-x-hidden">
+
+  <header class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-center">
+    <nav class="w-full max-w-7xl px-6 py-4 rounded-full flex items-center justify-between backdrop-blur-md bg-[#12100e]/70 border border-amber-500/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)] transition-all duration-300">
+
+      <a href="index.html" class="text-xl md:text-2xl font-serif font-bold text-amber-100 tracking-wide hover:text-amber-300 transition">
+        Pusaka Semarapura
+      </a>
+
+      <ul class="hidden md:flex items-center space-x-6 lg:space-x-8 text-stone-200 font-medium text-sm lg:text-base">
+        <li>
+          <a href="index.html" class="hover:text-amber-400 transition">Beranda</a>
+        </li>
+        <li>
+          <a href="index.html#sejarah" class="hover:text-amber-400 transition">Sejarah</a>
+        </li>
+
+        <li class="relative group">
+          <button class="flex items-center space-x-1 text-amber-400 font-semibold transition focus:outline-none">
+            <span>Jelajah</span>
+            <svg class="w-4 h-4 fill-current transform group-hover:rotate-180 transition-transform duration-200" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+            </svg>
+          </button>
+
+          <div class="absolute left-0 mt-2 w-48 rounded-2xl backdrop-blur-xl bg-[#1c1917]/95 border border-amber-500/20 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 overflow-hidden z-50">
+            <a href="kebudayaan.html" class="block px-4 py-3 text-sm text-amber-300 bg-amber-500/10 transition font-semibold">Kebudayaan</a>
+            <a href="kuliner.html" class="block px-4 py-3 text-sm text-stone-300 hover:bg-amber-500/10 hover:text-amber-300 transition">Kuliner</a>
+          </div>
+        </li>
+
+        <li>
+          <a href="scan.html" class="hover:text-amber-400 transition">Scan</a>
+        </li>
+        <li>
+          <a href="kuis.html" class="hover:text-amber-400 transition">Kuis</a>
+        </li>
+        <li>
+          <a href="profile.html" class="hover:text-amber-400 transition">Profile</a>
+        </li>
+      </ul>
+
+      <button id="menu-btn" class="md:hidden text-amber-200 focus:outline-none p-1" aria-label="Buka Menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mt-3 hidden absolute top-20 left-4 right-4 rounded-3xl backdrop-blur-2xl bg-[#1c1917]/98 border border-amber-500/30 p-6 text-stone-200 md:hidden shadow-2xl transition-all z-50">
+      <ul class="flex flex-col space-y-4 font-medium">
+        <li><a href="index.html" class="block hover:text-amber-400">Beranda</a></li>
+        <li><a href="index.html#sejarah" class="block hover:text-amber-400">Sejarah</a></li>
+        <li>
+          <span class="block text-amber-500/80 text-xs font-bold uppercase tracking-wider mb-1">Jelajah</span>
+          <div class="pl-4 space-y-2 border-l-2 border-amber-500/20">
+            <a href="kebudayaan.html" class="block text-amber-300 font-semibold text-sm">Kebudayaan</a>
+            <a href="kuliner.html" class="block hover:text-amber-400 text-sm">Kuliner</a>
+          </div>
+        </li>
+        <li><a href="scan.html" class="block hover:text-amber-400">Scan</a></li>
+        <li><a href="kuis.html" class="block hover:text-amber-400">Kuis</a></li>
+        <li><a href="profile.html" class="block hover:text-amber-400">Profile</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="pt-32 md:pt-40 pb-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-stone-900/60 backdrop-blur-md border border-amber-500/30 text-xs md:text-sm font-semibold tracking-widest uppercase text-amber-300">
+        Pusaka Bhumi Semarapura
+      </span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-extrabold tracking-tight text-amber-50">
+        Kebudayaan Klungkung
+      </h1>
+      <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed max-w-2xl mx-auto">
+        Menyelami keindahan seni lukis Wayang Kamasan, arsitektur Kertha Gosa, dan tradisi luhur yang terus hidup di Bumi Semarapura.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto mb-12">
+      <div class="grid gap-6 md:grid-cols-[1fr_1.2fr] items-center">
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-amber-400 bg-amber-500/10 mb-3">Seni Lukis</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-amber-100 mb-4">Seni Lukis Wayang Kamasan</h2>
+          <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed">
+            Gaya lukisan klasik tradisional Bali yang berpusat di Desa Kamasan, Klungkung, dikenal dengan motif pewayangan dan warna alami. Setiap lukisan mengisahkan epik Ramayana dan Mahabharata serta kehidupan estetika kerajaan.
+          </p>
+        </div>
+        <div class="relative">
+          <img src="../assets/foto/lukisan wayang kamasan.webp" alt="Seni Lukis Wayang Kamasan" class="w-full h-64 rounded-2xl object-cover shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto mb-12">
+      <div class="grid gap-6 md:grid-cols-[1.2fr_1fr] items-center">
+        <div class="relative order-2 md:order-1">
+          <img src="../assets/foto/barong.webp" alt="Barong" class="w-full h-64 rounded-2xl object-cover shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+        </div>
+        <div class="order-1 md:order-2">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-amber-400 bg-amber-500/10 mb-3">Arsitektur</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-amber-100 mb-4">Barong: Penjaga Kebaikan dalam Tradisi Bali</h2>
+          <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed">
+            Barong adalah lambang kesehatan dan keberuntungan bagi masyarakat Bali, tokoh yang berhadapan dengan Rangda.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto mb-12">
+      <div class="grid gap-6 md:grid-cols-[1fr_1.2fr] items-center">
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-amber-400 bg-amber-500/10 mb-3">Budaya</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-amber-100 mb-4">Celuluk: Pengikut Rangda dalam Kisah Calonarang</h2>
+          <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed">
+           alam cerita Calonarang, Celuluk dikenal sebagai pelayan atau pengikut Rangda, digambarkan bertaring dan berwajah seram, namun kerap berperan jenaka. Calonarang sendiri menggambarkan adu kekuatan antara kebaikan dan kejahatan.
+          </p>
+        </div>
+        <div class="relative">
+          <img src="../assets/foto/celuluk.webp" alt="Celuluk" class="w-full h-64 rounded-2xl object-cover shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto mb-12">
+      <div class="grid gap-6 md:grid-cols-[1.2fr_1fr] items-center">
+        <div class="relative order-2 md:order-1">
+          <img src="../assets/foto/lontar.webp" alt="Seni Rupa & Kerajinan" class="w-full h-64 rounded-2xl object-cover shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
+        </div>
+        <div class="order-1 md:order-2">
+          <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-amber-400 bg-amber-500/10 mb-3">Kerajinan</span>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-amber-100 mb-4">Lontar</h2>
+          <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed">
+            ontar adalah naskah kuno yang ditulis pada lembaran daun lontar kering, lalu dijajarkan dan diikat dengan tali yang dilengkapi koin berlubang. Isinya beragam, dari sastra dan ajaran agama sampai pengobatan dan aturan hidup, umumnya ditulis dengan aksara Bali.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto mb-16">
+      <div class="text-center mb-8">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-amber-400 bg-amber-500/10 mb-2">Pusaka Militer</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-amber-100">Senjata Kerajaan Klungkung</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl bg-[#1c1917]/80 border border-amber-500/30 p-5 shadow-2xl flex flex-col justify-between hover:border-amber-400 hover:scale-[1.02] transition-all duration-300">
+          <div>
+            <div class="aspect-[16/10] w-full rounded-xl bg-amber-950/30 border border-amber-500/20 flex items-center justify-center mb-4 overflow-hidden">
+              <img src="../assets/foto/senjata2.webp" alt="Keris Kerajaan Klungkung" class="w-full h-full rounded-lg object-cover">
+            </div>
+            <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold block mb-1">Senjata Utama</span>
+            <h3 class="text-xl font-serif font-bold text-amber-100 mb-2">Keris: Senjata Sekaligus Pusaka</h3>
+            <p class="text-stone-300 text-sm font-light leading-relaxed">
+              Keris adalah senjata tikam tradisional dengan bilah runcing yang pangkalnya melebar tidak simetris. Di Nusantara, keris tidak hanya dipandang sebagai senjata, tetapi juga sebagai pusaka dan bagian dari busana adat, UNESCO mengakui keris sebagai “Karya Agung Warisan Budaya Lisan dan Takbenda Manusia.”
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-[#1c1917]/80 border border-amber-500/30 p-5 shadow-2xl flex flex-col justify-between hover:border-amber-400 hover:scale-[1.02] transition-all duration-300">
+          <div>
+            <div class="aspect-[16/10] w-full rounded-xl bg-amber-950/30 border border-amber-500/20 flex items-center justify-center mb-4 overflow-hidden">
+              <img src="../assets/foto/pande.webp" alt="Memande" class="w-full h-full rounded-lg object-cover">
+            </div>
+            <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold block mb-1">Pembuatan Senjata</span>
+            <h3 class="text-xl font-serif font-bold text-amber-100 mb-2">Memande</h3>
+            <p class="text-stone-300 text-sm font-light leading-relaxed">
+             Pande dikenal sebagai para pengrajin logam dalam masyarakat Bali, yang menempa besi menjadi perkakas dan senjata. Di museum, tungku dari susunan bata merah, tabung bambu, serta palu dan pahat di vitrin memperlihatkan bahwa pekerjaan ini bertumpu pada alat sederhana dan keterampilan tangan.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-[#1c1917]/80 border border-amber-500/30 p-5 shadow-2xl flex flex-col justify-between hover:border-amber-400 hover:scale-[1.02] transition-all duration-300">
+          <div>
+            <div class="aspect-[16/10] w-full rounded-xl bg-amber-950/30 border border-amber-500/20 flex items-center justify-center mb-4 overflow-hidden">
+              <img src="../assets/foto/senjata1.webp" alt="Tombak Serba Guna" class="w-full h-full rounded-lg object-cover">
+            </div>
+            <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold block mb-1">Senjata Pertempuran</span>
+            <h3 class="text-xl font-serif font-bold text-amber-100 mb-2">Deretan Tombak Tradisional</h3>
+            <p class="text-stone-300 text-sm font-light leading-relaxed">
+              Tombak, yang dalam bahasa Bali disebut tumbak, adalah senjata bertangkai panjang dengan mata runcing di ujungnya. Keempat tombak di vitrin ini punya mata yang berbeda: satu berbentuk daun, satu berlekuk seperti nyala api, dan dua lainnya berbilah panjang dan ramping. Tombak tidak berhenti sebagai senjata. Pada Tumpek Landep, umat Hindu Bali memberi persembahan khusus untuk benda berbahan logam, termasuk keris dan senjata pusaka, dan warga Pande membersihkan serta menyucikan pusaka leluhur seperti keris dan tombak pada hari itu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-16">
+      <a href="index.html" class="inline-flex items-center space-x-2 px-8 py-3.5 rounded-full bg-amber-600/25 backdrop-blur-md border border-amber-500/40 text-amber-200 font-medium text-sm hover:bg-amber-600/40 hover:border-amber-400 transition-all duration-300">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Kembali ke Beranda</span>
+      </a>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+
+  <script>
+    fetch('../components/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+        const container = document.getElementById('footer-container');
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(oldScript => {
+          const newScript = document.createElement('script');
+          if (oldScript.src) {
+            newScript.src = oldScript.src;
+          } else {
+            newScript.textContent = oldScript.textContent;
+          }
+          document.body.appendChild(newScript);
+          oldScript.remove();
+        });
+      })
+      .catch(err => console.error('Gagal memuat footer:', err));
+  </script>
+</body>
+</html>
